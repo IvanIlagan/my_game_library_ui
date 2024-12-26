@@ -1,4 +1,4 @@
-
+import { AddGameButton } from "./AddGameButton.tsx";
 
 function GameList() {
     return (
@@ -9,7 +9,7 @@ function GameList() {
                 </div>
                 <div>
                     <input type="text" className="border border-black/30 mr-2" placeholder="Search Game List" />
-                    <button className="border border-black/30 p-1">Add</button>
+                    <AddGameButton />
                 </div>
             </div>
 
