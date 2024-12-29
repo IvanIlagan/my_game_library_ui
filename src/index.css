@@ -9,14 +9,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 2rem !important;
   min-width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   overflow-x: hidden;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .form-input {
+    @apply w-full rounded-lg border border-black/30 h-10 p-2 focus:ring-sky-500 focus:border-sky-500 invalid:[&.dirty]:border-red-500 invalid:[&.dirty]:ring-red-500 focus:invalid:[&.dirty]:border-red-500 focus:invalid:[&.dirty]:ring-red-500 mt-5;
+  }
+
+  .form-button {
+    @apply rounded-lg text-white p-2 disabled:opacity-60 disabled:cursor-not-allowed
+  }
+}
