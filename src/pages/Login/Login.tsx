@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router";
-import {Auth} from "../services/AuthService.ts";
+import {Auth} from "../../services/AuthService.ts";
 
 export default function Login() {
     const [disabled, setDisabled] = useState(false);

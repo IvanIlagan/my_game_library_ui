@@ -2,10 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
-import GameList from "./GameList";
-import GameDetail from "./GameDetail";
-import SignUp from "./SignUp";
-import Login from "./Login";
+import GameList from "./pages/GameList";
+import GameDetail from "./pages/GameDetail";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 createRoot(document.getElementById('root')!).render(
 

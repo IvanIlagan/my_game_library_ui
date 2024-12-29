@@ -1,8 +1,8 @@
 import React from "react";
 import {useState} from "react";
-import {Auth} from "../services/AuthService.ts";
+import {Auth} from "../../services/AuthService.ts";
 import {useNavigate} from "react-router";
-import {emailPattern, passwordPattern} from "../constants/RegexPatterns.ts";
+import {emailPattern, passwordPattern} from "../../constants/RegexPatterns.ts";
 
 // TODO: When user navigates to sign_up (when they are already signed up), auto navigate them to root (not now)
 export default function SignUp() {
