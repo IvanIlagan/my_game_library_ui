@@ -1,19 +1,14 @@
-import axios from "axios";
+import {V1ApiService} from "./V1ApiService.ts";
 
-class AuthService {
-    private apiVersion: string = 'v1';
-    private domain: string = 'localhost:3005';
-    private endpoint: string = `http://${this.domain}/api/${this.apiVersion}`;
-
+class AuthService extends V1ApiService{
     constructor() {
-        axios.defaults.withCredentials = true;
-        axios.defaults.withXSRFToken = true;
+        super();
     }
 
     async signUp(form: HTMLFormElement) {
-        await axios.get('http://localhost:3005/sanctum/csrf-cookie');
+        await this.http.get('http://localhost:3005/sanctum/csrf-cookie');
 
-        return axios.post(`${(this.endpoint)}/sign_up`, form, {
+        return this.http.post(`${(this.endpoint)}/sign_up`, form, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': true,
@@ -23,9 +18,9 @@ class AuthService {
     }
 
     async login(form: HTMLFormElement) {
-        await axios.get('http://localhost:3005/sanctum/csrf-cookie');
+        await this.http.get('http://localhost:3005/sanctum/csrf-cookie');
 
-        return axios.post(`${(this.endpoint)}/login`, form, {
+        return this.http.post(`${(this.endpoint)}/login`, form, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': true,
