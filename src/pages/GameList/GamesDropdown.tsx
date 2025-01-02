@@ -1,6 +1,6 @@
 import { GameItem } from "../../interfaces/GameItem.ts";
 
-export function GamesDropdown({ data , onClick }) {
+export function GamesDropdown({ data , onSelect }) {
     const games: GameItem[] = data;
 
     // NEXT:
@@ -12,9 +12,9 @@ export function GamesDropdown({ data , onClick }) {
     const list = games.map((game: GameItem, index) => {
         return (
             <li key={index} className='h-[150px] mb-4 border rounded-2xl'>
-                <button className='flex h-full w-full'>
+                <button className='flex h-full w-full' onClick={() => onSelect(game)}>
                     <div className='icon h-full w-[120px] mr-4'>
-                        <img alt={game.name} src={game.imageUrl} className='h-full w-full rounded-l-2xl'/>
+                        <img alt={game.name} src={game.image_url} className='h-full w-full rounded-l-2xl'/>
                     </div>
                     <div className='font-bold text-left self-center'>
                         {game.name}

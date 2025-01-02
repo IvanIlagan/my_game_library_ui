@@ -1,5 +1,5 @@
 export interface GameItem {
     name: string;
-    imageUrl: string;
+    image_url: string;
     description: string;
 }
