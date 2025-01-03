@@ -13,6 +13,10 @@ class MyGamesService extends V1ApiService {
     getMyGames() {
         return this.http.get(`${(this.endpoint)}/my_games`);
     }
+
+    getMyGame(gameId: string) {
+        return this.http.get(`${(this.endpoint)}/my_games/${gameId}`);
+    }
 }
 
 export const OwnedGamesService = new MyGamesService();
