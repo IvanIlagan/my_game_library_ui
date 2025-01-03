@@ -14,7 +14,10 @@ export default function SignUp() {
         event.preventDefault();
 
         await Auth.signUp(event.target as HTMLFormElement)
-            .then(() => navigate('/'))
+            .then((resp) => {
+                localStorage.setItem("ign", resp.data.in_game_name);
+                navigate('/');
+            })
             .catch(e => {
                 // TODO: display an error message toaster for this
                 console.error(e.message)

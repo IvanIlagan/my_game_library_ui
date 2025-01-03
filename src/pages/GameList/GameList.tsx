@@ -1,11 +1,13 @@
 import { AddGameButton } from "./AddGameButton.tsx";
 
 function GameList() {
+    const name: string = localStorage.getItem("ign") || 'Player';
+
     return (
         <>
             <div className="navbar flex justify-between">
                 <div>
-                    My Game List
+                    {name}'s Games
                 </div>
                 <div>
                     <input type="text" className="border border-black/30 mr-2" placeholder="Search Game List" />
