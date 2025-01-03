@@ -9,6 +9,10 @@ class MyGamesService extends V1ApiService {
     addGame(game: GameItem) {
         return this.http.post(`${(this.endpoint)}/my_games`, game);
     }
+
+    getMyGames() {
+        return this.http.get(`${(this.endpoint)}/my_games`);
+    }
 }
 
 export const OwnedGamesService = new MyGamesService();
