@@ -2,10 +2,12 @@ import { AddGameButton } from "./AddGameButton.tsx";
 import {OwnedGamesService} from "../../services/MyGamesService.ts";
 import {useEffect, useState} from "react";
 import {GameItem} from "../../interfaces/GameItem.ts";
+import {useNavigate} from "react-router";
 
 function GameList() {
     const name: string = localStorage.getItem("ign") || 'Player';
     const [games, setGames] = useState<GameItem[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let ignore: boolean = false;
@@ -28,15 +30,20 @@ function GameList() {
             })
     }
 
+    function onGameClick(game: GameItem) {
+        const id: string = game.gb_game_id;
+        navigate(`/my_games/${game.name}`, { state: { id } });
+    }
+
     const gamesList = games.map((item) => {
         return (
-        <div className="" key={item.gb_game_id}>
+        <button className="" key={item.gb_game_id} onClick={() => onGameClick(item)}>
             <img src={item.image_url} className="w-full h-[92%] object-fill" />
             <div
                 className="flex justify-center items-center w-full h-[8%] font-bold text-center bg-[#E1E1E1] p-auto rounded-b-lg overflow-hidden">
                 <span className="truncate">{item.name}</span>
             </div>
-        </div>
+        </button>
     )
     });
 

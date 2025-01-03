@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')!).render(
           <Routes>
               <Route path="/" element={<GameList />} />
 
-              <Route path=":game" element={<GameDetail />} />
+              <Route path="/my_games/:game" element={<GameDetail />} />
 
               <Route path="/sign_up" element={<SignUp />} />
 
