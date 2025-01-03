@@ -30,7 +30,7 @@ function GameList() {
 
     const gamesList = games.map((item) => {
         return (
-        <div className="">
+        <div className="" key={item.gb_game_id}>
             <img src={item.image_url} className="w-full h-[92%] object-fill" />
             <div
                 className="flex justify-center items-center w-full h-[8%] font-bold text-center bg-[#E1E1E1] p-auto rounded-b-lg overflow-hidden">
