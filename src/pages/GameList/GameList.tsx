@@ -49,17 +49,15 @@ function GameList() {
 
     return (
         <>
-            <div className="navbar flex justify-between">
-                <div>
-                    {name}'s Games
-                </div>
-                <div>
-                    <input type="text" className="border border-black/30 mr-2" placeholder="Search Game List" />
-                    <AddGameButton />
+            <div className="navbar flex justify-between items-center mb-6">
+                <h1 className="text-6xl bold">{name}'s Games</h1>
+                <div className="flex justify-center items-center">
+                    <input type="text" className="form-input mt-0 mr-4" placeholder="Search Game List"/>
+                    <AddGameButton/>
                 </div>
             </div>
 
-            <div className="list-filter">
+            <div className="list-filter mb-6">
                 filters here
             </div>
 
