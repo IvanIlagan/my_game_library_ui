@@ -18,6 +18,10 @@ class MyGamesService extends V1ApiService {
         return this.http.get(`${(this.endpoint)}/my_games/${gameId}`);
     }
 
+    updateMyGame(gameId: string, gameDetail) {
+        return this.http.put(`${(this.endpoint)}/my_games/${gameId}`, gameDetail);
+    }
+
     deleteMyGame(gameId: string) {
         return this.http.delete(`${(this.endpoint)}/my_games/${gameId}`);
     }
