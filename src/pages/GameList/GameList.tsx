@@ -1,8 +1,18 @@
 import { AddGameButton } from "./AddGameButton.tsx";
 import {OwnedGamesService} from "../../services/MyGamesService.ts";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {GameItem} from "../../interfaces/GameItem.ts";
 import {useNavigate} from "react-router";
+
+const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func(...args);
+        }, delay);
+    };
+};
 
 function GameList() {
     const name: string = localStorage.getItem("ign") || 'Player';
@@ -20,8 +30,15 @@ function GameList() {
         }
     }, []);
 
-    async function getMyGames() {
-        await OwnedGamesService.getMyGames()
+    const handleSearch = useCallback(
+        debounce((query: string) => {
+            getMyGames({ name: query });
+        }, 500),
+        []
+    );
+
+    async function getMyGames(params = {}) {
+        await OwnedGamesService.getMyGames(params)
             .then(resp => {
                 setGames(resp.data);
             })
@@ -33,6 +50,10 @@ function GameList() {
     function onGameClick(game: GameItem) {
         const id: string = game.gb_game_id;
         navigate(`/my_games/${game.name}`, { state: { id } });
+    }
+
+    function onSearchInput(event) {
+        handleSearch(event.target.value);
     }
 
     const gamesList = games.map((item) => {
@@ -52,7 +73,11 @@ function GameList() {
             <div className="navbar flex justify-between items-center mb-6">
                 <h1 className="text-6xl bold">{name}'s Games</h1>
                 <div className="flex justify-center items-center">
-                    <input type="text" className="form-input mt-0 mr-4" placeholder="Search Game List"/>
+                    <input type="text"
+                           className="form-input mt-0 mr-4"
+                           placeholder="Search My Game List"
+                           onInput={onSearchInput}
+                    />
                     <AddGameButton/>
                 </div>
             </div>

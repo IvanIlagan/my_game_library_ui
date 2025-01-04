@@ -10,8 +10,8 @@ class MyGamesService extends V1ApiService {
         return this.http.post(`${(this.endpoint)}/my_games`, game);
     }
 
-    getMyGames() {
-        return this.http.get(`${(this.endpoint)}/my_games`);
+    getMyGames(params = {}) {
+        return this.http.get(`${(this.endpoint)}/my_games`, { params });
     }
 
     getMyGame(gameId: string) {
