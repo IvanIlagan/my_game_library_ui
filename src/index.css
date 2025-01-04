@@ -33,4 +33,16 @@ body {
   .form-button {
     @apply rounded-lg text-white p-2 disabled:opacity-60 disabled:cursor-not-allowed
   }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/80
+  }
+
+  .modal-container {
+    @apply fixed w-[500px] top-1/2 left-1/2 bg-white rounded-[6px] -translate-x-1/2 -translate-y-1/2
+  }
+
+  .modal-title {
+    @apply m-0 font-medium text-lg p-6
+  }
 }

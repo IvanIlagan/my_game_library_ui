@@ -75,9 +75,9 @@ export function AddGameButton() {
 
 
                 <Dialog.Portal>
-                    <Dialog.Overlay className="fixed inset-0 bg-black/80" />
-                    <Dialog.Content className="fixed w-[500px] top-1/2 left-1/2 bg-white rounded-[6px] -translate-x-1/2 -translate-y-1/2" onCloseAutoFocus={onClose}>
-                        <Dialog.Title className="m-0 font-medium text-lg p-6">
+                    <Dialog.Overlay className="modal-overlay" />
+                    <Dialog.Content className="modal-container" onCloseAutoFocus={onClose}>
+                        <Dialog.Title className="modal-title">
                             <div className="flex justify-between">
                                 Add Game
 
