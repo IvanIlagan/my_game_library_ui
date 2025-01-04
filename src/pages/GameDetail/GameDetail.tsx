@@ -2,6 +2,7 @@ import {useLocation} from "react-router";
 import {useEffect, useState} from "react";
 import {OwnedGamesService} from "../../services/MyGamesService.ts";
 import {OwnedGameDetails} from "../../interfaces/OwnedGameDetails.ts";
+import {RemoveGameButton} from "./RemoveGameButton.tsx";
 
 export default function GameDetail() {
     const { state } = useLocation();
@@ -54,7 +55,7 @@ export default function GameDetail() {
                 </div>
             </div>
 
-            <div className="h-[300px] p-6 shadow-[0px_0px_2px_rgb(0,0,0),0px_17px_24px_rgba(0,0,0,0.3)]">
+            <div className="h-[300px] p-6 shadow-[0px_0px_2px_rgb(0,0,0),0px_17px_24px_rgba(0,0,0,0.3)] mb-12">
                 <h4 className="text-2xl font-bold">My Play Data</h4>
                 <div>
                     Times played: {gameDetail?.times_played}
@@ -62,6 +63,10 @@ export default function GameDetail() {
                 <div>
                     Game Finished?: {gameDetail?.is_finished ? 'Finished' : 'Not Finished'}
                 </div>
+            </div>
+
+            <div className="float-right mb-12" >
+                <RemoveGameButton gameId={gameId} gameName={gameDetail?.name} />
             </div>
         </>
     )

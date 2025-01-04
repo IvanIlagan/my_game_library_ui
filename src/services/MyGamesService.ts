@@ -17,6 +17,10 @@ class MyGamesService extends V1ApiService {
     getMyGame(gameId: string) {
         return this.http.get(`${(this.endpoint)}/my_games/${gameId}`);
     }
+
+    deleteMyGame(gameId: string) {
+        return this.http.delete(`${(this.endpoint)}/my_games/${gameId}`);
+    }
 }
 
 export const OwnedGamesService = new MyGamesService();
