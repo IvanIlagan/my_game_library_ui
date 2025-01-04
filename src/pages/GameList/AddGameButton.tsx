@@ -70,7 +70,7 @@ export function AddGameButton() {
         <>
             <Dialog.Root open={modalOpen} onOpenChange={setModalOpen}>
                 <Dialog.Trigger asChild>
-                    <button className="border border-black/30 p-1">Add</button>
+                    <button className="form-button bg-[rgb(54,217,0)]">Add</button>
                 </Dialog.Trigger>
 
 
@@ -96,8 +96,11 @@ export function AddGameButton() {
                         <hr/>
 
                         <div className="mb-2 p-6">
-                            Search Games: <input className="border border-black/30" type="text" placeholder="Search" onInput={onInput} />
+                            Search Games
+                            <input className="form-input" type="text" placeholder="Search" onInput={onInput} />
                         </div>
+
+                        <hr/>
 
                         <div>
                             {optionsLoading ?
@@ -105,6 +108,8 @@ export function AddGameButton() {
                                 <GamesDropdown data={games} onSelect={setSelected} />
                             }
                         </div>
+
+                        <hr/>
 
                         <div className="p-6">
                             Selected
@@ -126,7 +131,7 @@ export function AddGameButton() {
 
                         <div className="flex p-6 justify-end">
                             <Dialog.Close asChild>
-                                <button className="border border-black/30 p-1" onClick={onAdd}>Add</button>
+                                <button className="form-button bg-[rgb(54,217,0)]" onClick={onAdd}>Add</button>
                             </Dialog.Close>
                         </div>
                     </Dialog.Content>
