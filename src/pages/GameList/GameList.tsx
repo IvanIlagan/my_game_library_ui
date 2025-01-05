@@ -99,6 +99,10 @@ function GameList() {
         setGames(sortGames(games, criteria));
     }
 
+    function onAddGame(game: GameItem) {
+        setGames(games.concat(game));
+    }
+
     function renderArrowDirection(direction: string) {
         if (direction === "asc") {
             return (
@@ -162,7 +166,7 @@ function GameList() {
                            placeholder="Search My Game List"
                            onInput={onSearchInput}
                     />
-                    <AddGameButton/>
+                    <AddGameButton onAddGame={onAddGame}/>
                 </div>
             </div>
 
