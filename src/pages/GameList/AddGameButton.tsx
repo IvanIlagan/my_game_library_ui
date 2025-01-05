@@ -15,7 +15,7 @@ const debounce = (func, delay) => {
     };
 };
 
-export function AddGameButton() {
+export function AddGameButton({ onAddGame }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [games, setGames] = useState([]);
     const [optionsLoading, setOptionsLoading] = useState(false);
@@ -52,6 +52,7 @@ export function AddGameButton() {
         if (selected) {
             await OwnedGamesService.addGame(selected)
                 .then(() => {
+                    onAddGame(selected);
                     onClose();
                     setModalOpen(false);
                 })
