@@ -14,6 +14,28 @@ const debounce = (func, delay) => {
     };
 };
 
+export function sortGames(games: GameItem[], order) {
+    return [...games].sort((item1, item2) => {
+        let nameCriterion: number = 0;
+        let addedDateCriterion: number = 0;
+
+        if (order.name === "asc") {
+            nameCriterion = item1.name.localeCompare(item2.name);
+        } else {
+            nameCriterion = item2.name.localeCompare(item1.name);
+        }
+
+        if (order.addedDate === "asc") {
+            addedDateCriterion = new Date(item1.created_at).getTime() > new Date(item2.created_at).getTime() ? 1 : -1;
+        } else {
+            addedDateCriterion = new Date(item2.created_at).getTime() > new Date(item1.created_at).getTime() ? 1 : -1;
+        }
+
+
+        return nameCriterion || addedDateCriterion;
+    });
+}
+
 function GameList() {
     const name: string = localStorage.getItem("ign") || 'Player';
     const [games, setGames] = useState<GameItem[]>([]);
@@ -64,7 +86,7 @@ function GameList() {
             addedDate: orderCriteria.addedDate
         };
         setOrderCriteria(criteria);
-        sortGames(criteria);
+        setGames(sortGames(games, criteria));
     }
 
     function onAddedDateSortClick() {
@@ -74,30 +96,7 @@ function GameList() {
             addedDate: order
         };
         setOrderCriteria(criteria);
-        sortGames(criteria);
-    }
-
-    function sortGames(order) {
-        games.sort((item1, item2) => {
-            let nameCriterion: number = 0;
-            let addedDateCriterion: number = 0;
-
-            if (order.name === "asc") {
-                nameCriterion = item1.name.localeCompare(item2.name);
-            } else {
-                nameCriterion = item2.name.localeCompare(item1.name);
-            }
-
-            if (order.addedDate === "asc") {
-                addedDateCriterion = new Date(item1.created_at).getTime() > new Date(item2.created_at).getTime() ? 1 : -1;
-            } else {
-                addedDateCriterion = new Date(item2.created_at).getTime() > new Date(item1.created_at).getTime() ? 1 : -1;
-            }
-
-
-            return nameCriterion || addedDateCriterion;
-        });
-        setGames(games);
+        setGames(sortGames(games, criteria));
     }
 
     function renderArrowDirection(direction: string) {
